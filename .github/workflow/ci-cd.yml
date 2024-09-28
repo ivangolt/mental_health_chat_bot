@@ -16,19 +16,19 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.11'
     - name: Cache dependencies
       uses: actions/cache@v3
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements-dev.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r Mental_Hea/requirements-dev.txt
+        pip install poetry --no-cache-dir
+        poetry install app/pyproject.toml
     - name: Run tests
-      run: python -m pytest Mental_Hea/tests/
+      run: python -m pytest app/tests/
     - name: Run linting
-      run: flake8 Mental_Hea/
+      run: ruff check .
