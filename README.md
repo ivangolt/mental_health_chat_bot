@@ -4,6 +4,8 @@
 
 # Mental Health Conversation Project using RAG and Qdrant
 
+
+Frontend of the app    ![web app](images/app.png)
 ## Problem Statement
 
 ## Description
